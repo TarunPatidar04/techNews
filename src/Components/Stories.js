@@ -3,7 +3,7 @@ import React from 'react'
 const Stories = () => {
   return (
     <div>
-      <h3>Strores</h3>
+      <h5>Strores</h5>
     </div>
   )
 }

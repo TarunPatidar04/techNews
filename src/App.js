@@ -6,7 +6,7 @@ import Search from "./Components/Search";
 const App = () => {
   return (
     <div>
-      <h1>Welcome to news Website</h1>
+      <h3>Welcome to news Website</h3>
       <Search />
       <Pagination />
       <Stories />
