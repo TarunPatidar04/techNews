@@ -77,3 +77,22 @@ span {
 .card-button a last-child {
   color: red;
 }
+
+.pagination_button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 15px;
+}
+
+.pagination_button button {
+  height: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.pagination_button p{
+  color: black;
+}

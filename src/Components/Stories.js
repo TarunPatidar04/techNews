@@ -1,7 +1,7 @@
 import React from "react";
 import { useGlobalContext } from "./Context";
 const Stories = () => {
-  const { hits, nbPages, isLoading ,removePost} = useGlobalContext();
+  const { hits, nbPages, isLoading, removePost } = useGlobalContext();
   if (isLoading) {
     return (
       <>
@@ -12,11 +12,11 @@ const Stories = () => {
   return (
     <>
       <div className="stories-div">
-        {hits.map((curPost) => {
+        {hits.map((curPost, index) => {
           const { title, author, objectID, url, num_comments } = curPost;
           return (
-            <>
-              <div className="card" key={objectID}>
+            <div key={objectID}>
+              <div className="card">
                 <h2>{title}</h2>
                 <p>
                   by <span>{author}</span> | <span>{num_comments}</span>{" "}
@@ -30,14 +30,14 @@ const Stories = () => {
                     href="#"
                     style={{ color: "red" }}
                     onClick={() => {
-                      removePost(objectID)
+                      removePost(objectID);
                     }}
                   >
                     Remove
                   </a>
                 </div>
               </div>
-            </>
+            </div>
           );
         })}
       </div>

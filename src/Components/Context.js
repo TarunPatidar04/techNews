@@ -52,11 +52,20 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "SEARCH_QUERY", payload: searchQuery });
   };
 
+  // Pagination button
+  const getPrevPage = () => {
+    dispatch({ type: "PREV_PAGE" });
+  };
+  const getNextPage = () => {
+    dispatch({ type: "NEXT_PAGE" });
+  };
   useEffect(() => {
     fetchApiData(`${API}query=${state.query}&page=${state.page}`);
-  }, [state.query]);
+  }, [state.query,state.page]);
   return (
-    <AppContext.Provider value={{ ...state, removePost, searchPost }}>
+    <AppContext.Provider
+      value={{ ...state, removePost, searchPost, getPrevPage, getNextPage }}
+    >
       {children}
     </AppContext.Provider>
   );
