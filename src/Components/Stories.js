@@ -1,25 +1,8 @@
-import React, { useEffect } from "react";
-
+import React from "react";
+import { useGlobalContext } from "./Context";
 const Stories = () => {
-  let isLoading = true;
-  let API = "https://hn.algolia.com/api/v1/search?query=html";
-
-  const fetchApiData = async (url) => {
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      console.log(data);
-      //  isLoading = false;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchApiData(API);
-  }, []);
-
-  if (!isLoading) {
+  const { hits, nbPages, isLoading ,removePost} = useGlobalContext();
+  if (isLoading) {
     return (
       <>
         <h1>Loading...</h1>
@@ -28,7 +11,36 @@ const Stories = () => {
   }
   return (
     <>
-      <h2>Tech News Post</h2>
+      <div className="stories-div">
+        {hits.map((curPost) => {
+          const { title, author, objectID, url, num_comments } = curPost;
+          return (
+            <>
+              <div className="card" key={objectID}>
+                <h2>{title}</h2>
+                <p>
+                  by <span>{author}</span> | <span>{num_comments}</span>{" "}
+                  comments
+                </p>
+                <div className="card-button">
+                  <a href={url} target="_blank">
+                    Read More
+                  </a>
+                  <a
+                    href="#"
+                    style={{ color: "red" }}
+                    onClick={() => {
+                      removePost(objectID)
+                    }}
+                  >
+                    Remove
+                  </a>
+                </div>
+              </div>
+            </>
+          );
+        })}
+      </div>
     </>
   );
 };

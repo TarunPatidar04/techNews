@@ -1,15 +1,10 @@
-import React from 'react'
-import { useGlobalContext } from "./Context";
-
-
+import React from "react";
 const Search = () => {
-  const data=useGlobalContext()
   return (
     <div>
-      <h5>Search : :{data}</h5>
+      <h5>Search</h5>
     </div>
-  )
-}
+  );
+};
 
-export default Search
-
+export default Search;
