@@ -18,6 +18,9 @@ h1 {
   margin: 2rem 0;
   text-align: center;
 }
+.form {
+  text-align: center;
+}
 
 h2 {
   font-family: "IBM Plex Serif" serif;
@@ -54,7 +57,7 @@ span {
   color: #15133c;
 }
 
-.card{
+.card {
   margin-top: 2%;
 }
 
